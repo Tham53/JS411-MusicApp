@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router'
-import Home from './Home'
+import Home from './App'
 import Dashboard from './components/Dashboard'
 
 const Router = () => {
