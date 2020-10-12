@@ -4,8 +4,9 @@ import './index.css';
 //import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Header from './components/Header';
-import Login from './components/Login';
-
+import Home from './components/Home';
+import Dashboard from './components/Dashboard';
+import "./App.css";
 
 class App extends React.Component {
 state = {
@@ -24,9 +25,9 @@ return (
 <div className="App">
 <Header />
 {!this.state.loggedIn ? (
-<Login onLogin={this.onLogin} />
+<Home onLogin={this.onLogin} />
 ):(
-<h1>Welcome</h1>
+<Dashboard/>
 )}
 </div>
 );
