@@ -5,7 +5,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
-// import { withStyles } from "@material-ui/core/styles";
+import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
 
 const SoundQuality = (props) => {
@@ -21,17 +21,18 @@ const SoundQuality = (props) => {
           </Typography>
         </CardContent>
         <CardActions class="select">
-          <Typography component="div">
+          <FormControl>
             <Select
-              class="selectQuaility"
-              onChange={props.handleQualityChange}
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
               value={props.quality}
+              onChange={props.handleQualityChange}
             >
               <MenuItem value={1}>Low</MenuItem>
               <MenuItem value={2}>Medium</MenuItem>
               <MenuItem value={3}>High</MenuItem>
             </Select>
-          </Typography>
+          </FormControl>
         </CardActions>
       </Card>
     </div>
