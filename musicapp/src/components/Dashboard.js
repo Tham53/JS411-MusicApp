@@ -9,15 +9,16 @@ class Dashboard extends React.Component {
     this.state = {
       isOnline: true,
       quality: 3,
-      notifications: [
-        "Your application is offline. You won't be able to share or stream music to other devices.",
-        "Music quality is degraded. Increase quality if your connection allows it.",
-        "Listening to music at a high volume could cause long-term hearing loss.",
-      ],
+      notifications: [],
       volume: this.props.volumeState,
       mute: false,
       previousVolume: this.props.volumeState,
     };
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.notifications);
+    console.log(this.state.quality);
   }
 
   handleToggleChange = () => {
@@ -39,11 +40,45 @@ class Dashboard extends React.Component {
       volume: newMute ? 0 : this.state.previousVolume,
     });
   };
+
   handleChange = (event, value) => {
     this.setState({ volume: value });
   };
 
   render() {
+    let toggleMessage;
+    let qualityMessage;
+    let volumeMessage;
+    if (!this.state.isOnline) {
+      this.state.notifications.push(
+        "Your application is offline. You won't be able to share or stream music to other devices."
+      );
+      toggleMessage = (
+        <div>
+          {this.state.notifications[this.state.notifications.length - 1]}
+        </div>
+      );
+    }
+    if (this.state.quality === 1) {
+      this.state.notifications.push(
+        "Music quality is degraded. Increase quality if your connection allows it."
+      );
+      qualityMessage = (
+        <div>
+          {this.state.notifications[this.state.notifications.length - 1]}
+        </div>
+      );
+    }
+    if (this.state.volume > 80) {
+      this.state.notifications.push(
+        "Listening to music at a high volume could cause long-term hearing loss."
+      );
+      volumeMessage = (
+        <div>
+          {this.state.notifications[this.state.notifications.length - 1]}
+        </div>
+      );
+    }
     return (
       <div>
         <div className="cards">
@@ -62,12 +97,11 @@ class Dashboard extends React.Component {
             muteVolume={this.muteVolume}
             handleChange={this.handleChange}
           />
-
         </div>
         <h2 className="system">SYSTEM NOTIFICATIONS</h2>
-        {!this.state.isOnline && <div>{this.state.notifications[0]}</div>}{" "}
-        {this.state.quality === 1 && <div>{this.state.notifications[1]}</div>}
-        {this.state.volume > 80 && <div>{this.state.notifications[2]}</div>}
+        {toggleMessage}
+        {qualityMessage}
+        {volumeMessage}
       </div>
     );
   }
