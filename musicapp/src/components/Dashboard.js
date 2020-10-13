@@ -1,6 +1,6 @@
 import React from "react";
 import OnlineMode from "./OnlineMode";
-import SoundQuality from "./SoundQuality";
+import SoundQuality from "./Soundquality";
 import MasterVolume from "./MasterVolume";
 
 class Dashboard extends React.Component {
