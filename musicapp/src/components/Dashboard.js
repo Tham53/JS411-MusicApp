@@ -81,7 +81,8 @@ class Dashboard extends React.Component {
     }
     return (
       <div>
-        <div className="cards">
+        <h1 style={{paddingLeft: "20px"}}>Welcome!</h1>
+        <div style={{display: "flex", justifyContent: "center"}}>
           <OnlineMode
             isOnline={this.state.isOnline}
             handleToggleChange={this.handleToggleChange}

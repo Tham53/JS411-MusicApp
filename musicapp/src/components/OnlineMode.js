@@ -1,5 +1,4 @@
 import React from "react";
-import "../App.css";
 import Switch from "@material-ui/core/Switch";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -7,6 +6,17 @@ import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: '290px',
+    display: 'inline',
+    padding: '60px',
+    margin: '20px',
+    boxShadow: '5px 5px 15px rgb(78, 78, 78)',
+  },
+});
 
 const AntSwitch = withStyles((theme) => ({
   root: {
@@ -43,14 +53,15 @@ const AntSwitch = withStyles((theme) => ({
 }))(Switch);
 
 const OnlineMode = (props) => {
+    const classes = useStyles();
+
   return (
-    <div>
-      <Card variant="outlined" class="onlinecard">
+      <Card variant="outlined" classes={classes} style={{padding: "20px", width: "210px"}}>
         <CardContent>
-          <Typography variant="h5" component="h2" class="title">
+          <Typography variant="h5" component="h2" style={{paddingBottom: "10px"}}>
             Online Mode
           </Typography>
-          <Typography variant="body2" component="p" class="body">
+          <Typography variant="body2" component="p" class="body" color="textSecondary" style={{fontSize: "14px"}}>
             Toggle the switch to change the mode.
           </Typography>
         </CardContent>
@@ -66,7 +77,6 @@ const OnlineMode = (props) => {
           </Typography>
         </CardActions>
       </Card>
-    </div>
   );
 };
 
